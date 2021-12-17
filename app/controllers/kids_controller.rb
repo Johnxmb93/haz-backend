@@ -1,22 +1,25 @@
 class KidsController < ApplicationController
   def index
     kids = Kids.all
-    render json: posts
+    render json: kids
   end
 
   def create
     kid = Kid.new(
       name: params[:name],
       age: params[:age],
-      parent_id: params[:parent_id],
-      lunch: params[:lunch],
       note: params[:note],
+      lunch: params[:lunch],
+      drop_off_time: params[:drop_off_time],
+      pick_up_time: params[:pick_up_time],
+      days_attending: params[:days_attending],
+      phone_number: params[:phone_number],
+      parent_id: params[:parent_id],
     )
     if kid.save
-      render json: kid
+      render json: { message: "kid has been created" }, status: :created
     else
-      render json: { errors: kid.errors.full_messages },
-             status: :unprocessable_entity
+      render json: { errors: kid.errors.full_messages }, status: :bad_request
     end
   end
 end

@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get "/kids" => "kids#index"
+  get "/kids/:id" => "kids#show"
+  post "/kids" => "kids#create"
+  patch "/kids/:id" => "kids#update"
+
+  get "/parents" => "parents#index"
+  get "/parents/:id" => "parents#show"
+  post "/parents" => "parents#create"
+  patch "/parents/:id" => "parents#update"
+
+  post "/sessions" => "sessions#create"
 end
