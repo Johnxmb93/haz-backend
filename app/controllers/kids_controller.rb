@@ -4,6 +4,11 @@ class KidsController < ApplicationController
     render json: kids
   end
 
+  def show
+    kid = Kid.find_by(id: params[:id])
+    render json: kid
+  end
+
   def create
     kid = Kid.new(
       name: params[:name],
